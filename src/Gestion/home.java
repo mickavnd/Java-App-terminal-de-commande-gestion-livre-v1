@@ -42,8 +42,25 @@ public class home {
 }
 
 	private static boolean displayinfo() {
+		
+		boolean back = false;
+		
 		// TODO Auto-generated method stub
-		return false;
+		System.out.println("==============Cree toi un compte ========");
+		System.out.println("nom  :");
+		nom = sc.next();
+		
+		if(nom.contains("retour")) {
+			back = true;
+		}else {
+			System.out.println("prenom :");
+			prenom = sc.next(); //next() premet de faire un action  avant la prochaine line 
+								//nextLine permet lui de faire laction suivante avant que on tape quelque chose
+			back = true;
+			
+		}
+		
+		return back;
 	}
 
 	private static boolean displayLiberay() {
