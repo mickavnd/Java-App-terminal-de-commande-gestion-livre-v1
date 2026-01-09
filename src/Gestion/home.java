@@ -1,5 +1,6 @@
 package Gestion;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class home {
@@ -7,6 +8,8 @@ public class home {
 	 static Scanner sc = new Scanner(System.in);
 	 static String nom ="";
 	 static String prenom="";
+	 
+	 static ArrayList<String> list = new ArrayList<String>();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -31,7 +34,7 @@ public class home {
 			 switch (userchoice) {
 			 case 1 : firstchoice = displaycreate();
 			 case 2 : firstchoice = displayLiberay();
-			 case 3 : firstchoice = displayinfo();
+			 /*case 3 : firstchoice = displayinfo();*/
 			 default : error = "j'ai pas compris votre choix" ;
 			 
 			 
@@ -41,8 +44,7 @@ public class home {
 
 }
 
-	private static boolean displayinfo() {
-		
+	private static boolean displaycreate() {
 		boolean back = false;
 		
 		// TODO Auto-generated method stub
@@ -62,15 +64,61 @@ public class home {
 		
 		return back;
 	}
+	
+	
 
-	private static boolean displayLiberay() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
-	private static boolean displaycreate() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	}
+private static boolean displayinfo() {
+	 return false;
+}
 
+private static boolean displayLiberay() {
+	boolean  back2= false;
+	int NbBooks;
+	String addBook="";
+	String responseUser;
+	
+	Scanner sc2= new Scanner(System.in);
+	
+	System.out.println("===========================");
+	System.out.println("bienvenue dans votre librairy");
+	//avoir pour ajouté dautre option comme supprimer /ou modifier
+	
+	System.out.println("Tape 1 pour add un livre /tape voir pour voir la liste de livre /Tape  pour retour ");
+	
+	responseUser = sc2.next();
+	
+	if(responseUser.contains("add")) {
+		
+		System.out.println("combien de livre vouler vous ajouter?");
+		NbBooks = sc2.nextInt();
+		
+		for(int i=0;i<NbBooks;i++) {
+		System.out.println("mettre le nom de votre livre ?");	
+		addBook = sc2.next();
+		list.add(addBook);
+
+		}
+		
+		
+	}if (responseUser.contains("voir")) {
+		
+			if (addBook.isEmpty()) {
+			System.out.println("votre liste est vide");
+			}
+			else {
+				for(String books : list) {
+				System.out.println(books);
+										}
+				}
+	
+	}if (responseUser.contains("stop")) {
+		 back2 = true;
+		
+		}
+		
+		return back2;
+		//obliger de repasse par la case  creation de compte ??
+	}
+		
+}
