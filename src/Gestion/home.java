@@ -31,20 +31,26 @@ public class home {
 			 		""");
 			 userchoice = sc.nextInt();
 			 
-			 switch (userchoice) {
-			 case 1 : firstchoice = displaycreate();
-			 case 2 : firstchoice = displayLiberay();
-			 /*case 3 : firstchoice = displayinfo();*/
-			 default : error = "j'ai pas compris votre choix" ;
+			 if(userchoice==1) {
+				 firstchoice =  displaycreate();
+				 
+			 }if(userchoice ==2) {
+				 
+				 firstchoice =displayLiberay();
+				 
+			 }if (userchoice ==3) {
+				 
+				 firstchoice = displayinfo();
+				
+			}
 			 
-			 
-			 }
+			
 
 	}
 
 }
 
-	private static boolean displaycreate() {
+private static boolean displaycreate() {
 		boolean back = false;
 		
 		// TODO Auto-generated method stub
@@ -64,14 +70,23 @@ public class home {
 		
 		return back;
 	}
-	
-	
-
-
 private static boolean displayinfo() {
+	String responce ;
+	
+	System.out.println("information personel :");
+	
+	System.out.println("nom :" +nom);
+	
+	System.out.println("prenom :"+ prenom) ;
+	
+	responce = sc.next();
+	
+	if(responce.contains("retour")){
+		return true;
+	}
+
 	 return false;
 }
-
 private static boolean displayLiberay() {
 	boolean  back2= false;
 	int NbBooks;
@@ -82,7 +97,7 @@ private static boolean displayLiberay() {
 	
 	System.out.println("===========================");
 	System.out.println("bienvenue dans votre librairy");
-	//avoir pour ajouté dautre option comme supprimer /ou modifier
+	//avoir pour ajouté dautre option comme supprimer /ou 5modifier
 	
 	System.out.println("Tape 1 pour add un livre /tape voir pour voir la liste de livre /Tape  pour retour ");
 	
@@ -99,11 +114,12 @@ private static boolean displayLiberay() {
 		list.add(addBook);
 
 		}
+		back2 = true ;
 		
 		
 	}if (responseUser.contains("voir")) {
 		
-			if (addBook.isEmpty()) {
+			if (list.isEmpty()) {
 			System.out.println("votre liste est vide");
 			}
 			else {
@@ -112,13 +128,12 @@ private static boolean displayLiberay() {
 										}
 				}
 	
-	}if (responseUser.contains("stop")) {
+	}if (responseUser.contains("retour")) {
 		 back2 = true;
 		
 		}
 		
 		return back2;
-		//obliger de repasse par la case  creation de compte ??
 	}
 		
 }
