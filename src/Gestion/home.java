@@ -47,6 +47,7 @@ public class home {
 			
 
 	}
+		
 
 }
 
@@ -88,52 +89,87 @@ private static boolean displayinfo() {
 	 return false;
 }
 private static boolean displayLiberay() {
-	boolean  back2= false;
-	int NbBooks;
-	String addBook="";
+	boolean  back2= false;;
 	String responseUser;
-	
-	Scanner sc2= new Scanner(System.in);
+	String error="";
 	
 	System.out.println("===========================");
 	System.out.println("bienvenue dans votre librairy");
 	//avoir pour ajouté dautre option comme supprimer /ou 5modifier
 	
+	
 	System.out.println("Tape 1 pour add un livre /tape voir pour voir la liste de livre /Tape  pour retour ");
 	
-	responseUser = sc2.next();
+	responseUser = sc.next();
 	
-	if(responseUser.contains("add")) {
+	switch(responseUser){
 		
-		System.out.println("combien de livre vouler vous ajouter?");
-		NbBooks = sc2.nextInt();
+	 case "add" -> back2=addBooks();
+	 case "remove" ->back2 = removeBooks();
+	 case "voir" -> back2 =displayBooks();
+	 default ->   error =" je nais pas compris votre reponse";
+	
+	}
+	
+	return back2;
+}
+		
+
+//methode add, display,back,remove and update
+
+ private static boolean addBooks() {
+	 String addBook="";
+	 int NbBooks ;
+	 System.out.println("combien de livre vouler vous ajouter?");
+		  NbBooks = sc.nextInt();
 		
 		for(int i=0;i<NbBooks;i++) {
 		System.out.println("mettre le nom de votre livre ?");	
-		addBook = sc2.next();
+		addBook = sc.next();
 		list.add(addBook);
 
 		}
-		back2 = true ;
-		
-		
-	}if (responseUser.contains("voir")) {
-		
-			if (list.isEmpty()) {
+	 
+	 
+	 return true;
+ }
+ 
+ private static boolean displayBooks() {
+	 if (list.isEmpty()) {
 			System.out.println("votre liste est vide");
+			
 			}
 			else {
 				for(String books : list) {
 				System.out.println(books);
 										}
 				}
+			return false;
+ }
+ 
+ private static boolean removeBooks() {
+	 
+	String s ;
 	
-	}if (responseUser.contains("retour")) {
-		 back2 = true;
-		
-		}
-		
-		return back2;
+	s =sc.next();
+	
+	if(list.isEmpty()) {
+		System.out.println("vous ne pouvaus pas supprimer ");
+	}else {
+		list.remove(s);
 	}
-		
+	 
+	 
+	
+	
+	 return true;
+ }
+ 
+ 
+ 
+	
+
+
+
+
 }
