@@ -154,7 +154,7 @@ private static boolean displayLiberay() {
 	s =sc.next();
 	
 	if(list.isEmpty()) {
-		System.out.println("vous ne pouvaus pas supprimer ");
+		System.out.println("vous ne pouvais pas supprimer ");
 	}else {
 		list.remove(s);
 	}
