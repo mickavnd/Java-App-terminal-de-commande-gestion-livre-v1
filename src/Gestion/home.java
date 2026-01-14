@@ -44,7 +44,6 @@ public class home {
 				
 			}
 			 
-			
 
 	}
 		
@@ -98,7 +97,13 @@ private static boolean displayLiberay() {
 	//avoir pour ajouté dautre option comme supprimer /ou 5modifier
 	
 	
-	System.out.println("Tape 1 pour add un livre /tape voir pour voir la liste de livre /Tape  pour retour ");
+	System.out.println("""
+			-Tape add pour ajoute  un livre 
+			-Tape voir pour voir la liste de livre 
+			-tape update pour mettre a jour un livre
+			-Tape remove pour supprimer un livre
+			-Tape  pour retour
+			""");
 	
 	responseUser = sc.next();
 	
@@ -107,6 +112,7 @@ private static boolean displayLiberay() {
 	 case "add" -> back2=addBooks();
 	 case "remove" ->back2 = removeBooks();
 	 case "voir" -> back2 =displayBooks();
+	 case "update" ->back2 =updateBook();
 	 default ->   error =" je nais pas compris votre reponse";
 	
 	}
@@ -115,7 +121,7 @@ private static boolean displayLiberay() {
 }
 		
 
-//methode add, display,back,remove and update
+//methode Crud ( create ,read ,update,Delete);
 
  private static boolean addBooks() {
 	 String addBook="";
@@ -165,11 +171,31 @@ private static boolean displayLiberay() {
 	 return true;
  }
  
+ private static boolean updateBook() {
+	 String ancienmot;
+	 String noveaumot;
+	 int index ;
+	 System.out.println("quelle livre voulez vous mettre a jour ?");
+	 
+	 ancienmot = sc.next();
+	 
+	 if(list.contains(ancienmot)) {
+		 
+		index = list.indexOf(ancienmot);
+		
+		System.out.println("mettre le nouveau titre");
+		noveaumot =sc.next();
+		
+		list.set(index, noveaumot);
+		return true;
+		
+		 
+		 
+	 }
+	 
+	 
+	 return false;
+ }
  
  
-	
-
-
-
-
 }
