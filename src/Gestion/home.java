@@ -156,19 +156,23 @@ private static boolean displayLiberay() {
  private static boolean removeBooks() {
 	 
 	String s ;
+	boolean back = true;
 	
 	s =sc.next();
 	
 	if(list.isEmpty()) {
 		System.out.println("vous ne pouvais pas supprimer ");
+		back =true;
+		
 	}else {
 		list.remove(s);
+		back =true;
 	}
 	 
 	 
 	
 	
-	 return true;
+	 return back;
  }
  
  private static boolean updateBook() {
@@ -187,10 +191,10 @@ private static boolean displayLiberay() {
 		noveaumot =sc.next();
 		
 		list.set(index, noveaumot);
-		return true;
-		
+		return true; 
 		 
-		 
+	 }else {
+		 System.out.println("votre livre nest pas dans la liste");
 	 }
 	 
 	 
